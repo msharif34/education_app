@@ -13,6 +13,7 @@
      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/courses.css" rel="stylesheet" type="text/css" media="all" />
 <!-- start plugins -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -106,6 +107,14 @@
     </div>
   </div>
 </div>
+<% if(typeof alerts !== 'undefined'){ %>
+    <% for(key in alerts){ %>
+        <% alerts[key].forEach(function(thisMsg){ %>
+            <div class="alert alert-<%= key %>"><%= thisMsg %></div>
+        <% }); %>
+    <% } %>
+<% } %>
+<h5>hello <%= currentUser %></h5>
 <%- body %>
 </body>
 <div class="footer_bg"><!-- start footer -->

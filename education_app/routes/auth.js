@@ -17,13 +17,13 @@ router.post('/login',function(req,res){
     {badRequestMessage:'You must enter e-mail and password.'},
     function(err,user,info){
       if(user){
+        console.log(user)
         req.login(user,function(err){
           if(err) throw err;
           req.flash('success','You are now logged in.');
           res.redirect('/restricted');
         });
       }else{
-        res.send('Failed login')
         req.flash('danger',info.message || 'Unknown error.');
         res.redirect('/auth/login');
       }
