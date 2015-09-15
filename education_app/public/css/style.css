@@ -1,3 +1,4 @@
+
 .welcome_message {
 	font-family: 'texgyreadventorregular';
 	margin: 0 auto;
@@ -23,8 +24,12 @@ video {
 }
 body {
 	font-family: 'open_sansregular';
-	background:#ffffff;
-	font-size: 100%;
+/*	background-image: url("/images/background.jpg");
+*/	font-size: 100%;
+	/*opacity: 10;
+	background-repeat: no-repeat;*/
+
+
 }
 /* start header */
 .header_bg{
