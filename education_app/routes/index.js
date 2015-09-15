@@ -18,4 +18,13 @@ router.get('/restricted',function(req,res){
     }
 });
 
+/* GET contact page. */
+router.get('/contact', function(req, res, next) {
+  res.render('contact/contact');
+});
+
+/* GET about page. */
+router.get('/', function(req, res, next) {
+  res.render('index');
+});
 module.exports = router;

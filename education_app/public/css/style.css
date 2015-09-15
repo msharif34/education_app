@@ -1,9 +1,16 @@
-/*
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
-*/
+.welcome_message {
+	font-family: 'texgyreadventorregular';
+	margin: 0 auto;
+	text-align: center;
+
+
+}
+
+video {
+    display: block;
+    margin: 0 auto;
+}
+
 @font-face {
     font-family: 'texgyreadventorregular';
     src: url('../fonts/texgyreadventor-regular-webfont.ttf') format('truetype');
@@ -357,7 +364,7 @@ body {
 	padding-right: 0;
 }
 .technology_list1{
-	margin-top: 20px;	
+	margin-top: 20px;
 }
 .pagination > li > a, .pagination > li > span {
 	font-size: 16px;
@@ -391,7 +398,7 @@ body {
 }
 .blog_left h4 a{
 	margin:0 0 20px;
-	
+
 	display: block;
 	text-transform: capitalize;
 	font-size: 1.5em;
@@ -467,7 +474,7 @@ body {
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;	
+	transition: all 0.3s ease-in-out;
 }
 .social_network_likes li a p{
 	padding:10px 0 5px;
@@ -517,7 +524,7 @@ body {
 	width:45px;
 	height:45px;
 	display:block;
-	background:url(../images/social-icons.png) no-repeat;	
+	background:url(../images/social-icons.png) no-repeat;
 	margin:0 auto;
 }
 .social_network i.twitter-icon{
@@ -749,7 +756,7 @@ body {
 	}
 	.h_menu {
 		position: relative;
-	}	
+	}
 	.soc_icons {
 		position: absolute;
 		top: 0px;
@@ -848,7 +855,7 @@ body {
 		padding: 4px 4px;
 	}
 	.detail h2{
-		font-size: 2em;	
+		font-size: 2em;
 	}
 }
 @media only screen and (max-width: 320px) {
