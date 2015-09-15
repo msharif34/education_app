@@ -5,12 +5,15 @@
 	<div>
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#new" aria-controls="new" role="tab" data-toggle="tab">New Courses</a></li>
-			<li role="presentation"><a href="#free" aria-controls="free" role="tab" data-toggle="tab">Free Courses</a></li>
-			<li role="presentation"><a href="#paid" aria-controls="paid" role="tab" data-toggle="tab">Paid Courses</a></li>
-			<li role="presentation"><a href="#live" aria-controls="live" role="tab" data-toggle="tab">Settings</a></li>
+			<li role="presentation" class="active"><a href="#new" aria-controls="new" role="tab" data-toggle="tab">Subject 1</a></li>
+			<li role="presentation"><a href="#free" aria-controls="free" role="tab" data-toggle="tab">Subject 2</a></li>
+			<li role="presentation"><a href="#paid" aria-controls="paid" role="tab" data-toggle="tab">Subject 3</a></li>
+			<li role="presentation"><a href="#live" aria-controls="live" role="tab" data-toggle="tab">Subject 4</a></li>
 		</ul>
 		<!-- Tab panes -->
+		<% if(!currentUser){ %>
+			<h3> You must be a paid member to access this content, please sign up <a href="/auth/signup">here</a>.</h3>
+			<% }else{ %> 
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="new">
 				<div class="row">
@@ -181,5 +184,6 @@
 				</div>
 			</div>
 		</div>
+		<% } %>
 	</div>
 </div>

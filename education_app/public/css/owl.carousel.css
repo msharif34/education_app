@@ -1,7 +1,14 @@
-/*
-* 	Owl Carousel Owl Demo Theme 
-*	v1.24
-*/
+.lazyOwl {
+
+border-radius: 200px;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+
+}
+
     #owl-demo .item{
        margin: 0.5em;
 		transition: 0.5s all;
@@ -11,6 +18,8 @@
 		padding: 1em;
 		background: #fff;
 		cursor:pointer;
+
+
     }
     #owl-demo .item:hover a{
     		color:#EA6060;
@@ -141,7 +150,7 @@
 	min-height: 150px;
 	background: url(AjaxLoader.gif) no-repeat center center
 }
-/* 
+/*
  * 	Core Owl Carousel CSS File
  *	v1.24
  */
@@ -196,7 +205,7 @@
 }
 
 /* mouse grab icon */
-.grabbing { 
+.grabbing {
     cursor:url(grabbing.png) 8 8, move;
 }
 
@@ -446,7 +455,7 @@
 }
 @media only screen and (max-width:480px) and (min-width:320px) {
 	.owl-carousel {
-	
+
 	}
 	.da-slide .da-link {
 		top: 180px;
@@ -461,11 +470,11 @@
 	.item h4 a{
 		font-size: 1em;
 	}
-	
+
 }
 @media only screen and (max-width:320px) and (min-width:240px) {
 	.owl-carousel {
-	
+
 	}
 	#owl-demo .item img{
 		width: 40%;
