@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Tayibun </title>
+<title>Tayibun</title>
 <!-- Bootstrap -->
 <!-- Latest compiled and minified CSS & JS -->
 <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -12,7 +12,8 @@
      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/courses.css" rel="stylesheet" type="text/css" media="all" />
 <!-- start plugins -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -61,13 +62,20 @@
     <div class="logo navbar-left">
       <h1><a href="index.html">Tayibun </a></h1>
     </div>
-
-      <div class="pull-right">
-      <a href="/auth/login" class="btn btn-info btn-large" >Login <i class="icon-heart"></i></a>
-      <a href="/auth/signup" class="btn btn-info btn-large">Sign up <i class="icon-heart"></i></a>
-      </div>
-
-
+    <div class="h_search navbar-right">
+      <form>
+        <input type="text" class="text" value="Enter text here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter text here';}">
+        <input type="submit" value="search">
+      </form>
+      <% if(currentUser){ %>
+      <a href="/auth/logout" class="btn btn-default pull-right">Logout</a>
+      <h6>Logged in as: <%= currentUser.email %> </h6>
+      <% } %>
+      <% if(!currentUser){ %>
+   <a href="/auth/login" class="btn btn-default pull-right" >Login <i class="icon-heart"></i></a>
+    <a href="/auth/signup" class="btn btn-default pull-right">Sign up <i class="icon-heart"></i></a>
+    <% } %>
+    </div>
     <div class="clearfix"></div>
   </div>
 </div>
@@ -87,12 +95,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
             <li><a href="/courses">Course List</a></li>
-            <li><a href="about.html">Student Info</a></li>
-            <li><a href="blog.html">Contact Us</a></li>
-            <li><a href="contact.html">About Us</a></li>
-
+            <li><a href="/students">Student Info</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/about">About Us</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
         <!-- start soc_icons -->
@@ -101,7 +108,19 @@
       <ul class="list-unstyled text-center">
         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
         <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+      </ul> 
+    </div>
+  </div>
+</div><div class="container">
+  <% if(typeof alerts !== 'undefined'){ %>
+      <% for(key in alerts){ %>
+          <% alerts[key].forEach(function(thisMsg){ %>
+              <div class="alert alert-<%= key %>"><%= thisMsg %></div>
+          <% }); %>
+      <% } %>
+  <% } %>
 
       </ul>
     </div>

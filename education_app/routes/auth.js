@@ -17,13 +17,13 @@ router.post('/login',function(req,res){
     {badRequestMessage:'You must enter e-mail and password.'},
     function(err,user,info){
       if(user){
+        console.log(user)
         req.login(user,function(err){
           if(err) throw err;
-          req.flash('success','You are now logged in.');
+          req.flash('success','Welcome back, '+ user.first_name +'. ' + 'You are now logged in.');
           res.redirect('/restricted');
         });
       }else{
-        res.send('Failed login')
         req.flash('danger',info.message || 'Unknown error.');
         res.redirect('/auth/login');
       }
@@ -42,11 +42,38 @@ router.post('/signup',function(req,res){
     //do sign up here (add user to database)
     var email = req.body.email
     var password = req.body.password
-    db.user.findOrCreate({where: {email: email, password: password}}).spread(function(data){
-      console.log(data)
-    })
+    var first_name = req.body.first_name
+    var last_name = req.body.last_name
+    var password_confirmation = req.body.password_confirmation
+    console.log(email, password, password_confirmation, first_name, last_name)
+      if(password != password_confirmation){
+       req.flash('danger','Passwords do not match, please try again.');
+       res.redirect('/auth/signup')
+       return
+      }
+    db.user.findOrCreate({where: {
+                         email: email
+                       },
+                          defaults:{
+                          first_name: first_name,
+                          last_name: last_name,
+                          email: email, 
+                          password: password,
+                          password_confirmation: password_confirmation
+                          }}).spread(function(user, created){
+                            if(created){
+                              req.flash('success', 'Assalamu Alaikum '+  first_name +', ' + 'Welcome to Tayibun!');
+                              req.login(user,function(err){
+                                if(err) throw err;
+                                req.flash('success','You are now logged in.');
+                                res.redirect('/restricted');
+                              });
+                            }else{
+                               req.flash('danger','This email is already in use. Please try another email address.');
+                                res.redirect('/');
+                            }
+                            })
     //user is signed up forward them to the home page
-    res.redirect('/');
 });
 
 //GET /auth/logout

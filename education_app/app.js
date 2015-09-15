@@ -7,6 +7,7 @@ var flash = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var courses = require('./routes/courses');
 var auth = require('./routes/auth');
 var path = require('path');
 var logger = require('morgan');
@@ -44,6 +45,7 @@ app.use(flash());
 
 app.use(function(req,res,next){
   res.locals.alerts = req.flash();
+  res.locals.currentUser = req.user
   next();
 });
 
@@ -136,6 +138,7 @@ passport.use(new LocalStrategy({
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/courses', courses);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
