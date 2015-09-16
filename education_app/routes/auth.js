@@ -57,7 +57,7 @@ router.post('/signup',function(req,res){
                           defaults:{
                           first_name: first_name,
                           last_name: last_name,
-                          email: email, 
+                          email: email,
                           password: password,
                           password_confirmation: password_confirmation
                           }}).spread(function(user, created){
@@ -84,5 +84,28 @@ router.get('/logout',function(req,res){
     res.redirect('/');
 });
 
+router.get('/login/:provider',function(req,res){
+  passport.authenticate(
+    req.params.provider,
+    {scope:['public_profile','email']}
+  )(req,res);
+});
+
+router.get('/callback/:provider',function(req,res){
+  passport.authenticate(req.params.provider,function(err,user,info){
+    if(err) throw err;
+    if(user){
+      req.login(user,function(err){
+        if(err) throw err;
+        req.flash('success','You are now logged in.');
+        res.redirect('/dashboard')
+      });
+    }else{
+      var errorMsg = info && info.message ? info.message : 'Unknown error';
+      req.flash('danger',errorMsg);
+      res.redirect('/auth/login')
+    }
+  })(req,res);
+});
 
 module.exports = router;

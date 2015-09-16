@@ -71,12 +71,13 @@
       </form>
       <% if(currentUser){ %>
       <a href="/auth/logout" class="btn btn-default pull-right">Logout</a>
-      <h6>Logged in as: <%= currentUser.email %> </h6>
+      <h6>Logged in as: <%= currentUser.first_name %> </h6>
       <% } %>
       <% if(!currentUser){ %>
    <a href="/auth/login" class="btn btn-default pull-right" >Login <i class="icon-heart"></i></a>
     <a href="/auth/signup" class="btn btn-default pull-right">Sign up <i class="icon-heart"></i></a>
     <a href="/admin/login" class="btn btn-default pull-left" >Admin Login <i class="icon-heart"></i></a>
+      <a a href="/auth/login/facebook"class="btn btn-social-icon btn-facebook"> Sign in with Facebook</a>
     <% } %>
     </div>
     <div class="clearfix"></div>
@@ -115,9 +116,8 @@
       <ul class="list-unstyled text-center">
         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
         <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-      </ul> 
+      </ul>
     </div>
   </div>
 </div><div class="container">
