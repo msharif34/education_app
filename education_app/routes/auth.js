@@ -66,7 +66,7 @@ router.post('/signup',function(req,res){
                               req.login(user,function(err){
                                 if(err) throw err;
                                 req.flash('success','You are now logged in.');
-                                res.redirect('/restricted');
+                                res.redirect('/dashboard');
                               });
                             }else{
                                req.flash('danger','This email is already in use. Please try another email address.');

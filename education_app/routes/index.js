@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../models')
+var db = require('../models');
+var passport = require('passport');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,21 +14,30 @@ router.get('/admin', function(req, res, next) {
   res.render('admin',  { layout: 'admin' });
 });
 
-/* GET admin/charts page. */
-router.get('/admin/charts', function(req, res, next) {
-  res.render('admin/charts',  { layout: 'admin' });
+router.get('/admin/login',function(req,res){
+  res.render('admin/login');
 });
 
-
-//GET /restricted
-//an example restricted page
-router.get('/restricted',function(req,res){
-    if(req.isAuthenticated()){
-      res.render('restricted');
-    }else{
-      req.flash('danger','Access Denied.');
-      res.redirect('/');
+//POST /login
+//process login data and login admin
+router.post('/admin/login',function(req,res){
+  passport.authenticate(
+    'local',
+    {badRequestMessage:'You must enter e-mail and password.'},
+    function(err,user,info){
+      if(user){
+        console.log(user)
+        req.login(user,function(err){
+          if(err) throw err;
+          req.flash('success','Welcome back, '+ user.first_name +'. ' + 'You are now logged in.');
+          res.redirect('/admin');
+        });
+      }else{
+        req.flash('danger',info.message || 'Unknown error.');
+        res.redirect('/auth/login');
+      }
     }
+  )(req,res);
 });
 
 /* GET contact page. */
@@ -41,26 +52,10 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
-   db.course.findAll().then(function(data){
+ db.course.findAll().then(function(data){
    res.render('courses/dashboard', {data:data});
-  })
+ })
 });
 
-/* GET paid courses page. */
-router.get('/courses/:title', function(req, res, next) {
-  var title = req.params
-  db.course.findAll({where: {
-                  title: title.title.replace(/-/g, ' ')
-                  }}).then(function(data){
-                    var courseId = data[0].id
-                    db.asset.findAll({where: {
-                      courseId: courseId
-                    }}).then(function(course){
-                      console.log(course)
-                      res.render('courses/show', {course: course,
-                                                  data: data
-                                                  })
-                    })
-                  })
-});
+
 module.exports = router;

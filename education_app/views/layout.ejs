@@ -12,6 +12,7 @@
      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+<link href="/css/login.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/css/courses.css" rel="stylesheet" type="text/css" media="all" />
 <!-- start plugins -->
@@ -22,6 +23,7 @@
 <link href="css/slider.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
 <script type="text/javascript" src="js/jquery.cslider.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
   <script type="text/javascript">
       $(function() {
 
@@ -74,6 +76,7 @@
       <% if(!currentUser){ %>
    <a href="/auth/login" class="btn btn-default pull-right" >Login <i class="icon-heart"></i></a>
     <a href="/auth/signup" class="btn btn-default pull-right">Sign up <i class="icon-heart"></i></a>
+    <a href="/admin/login" class="btn btn-default pull-left" >Admin Login <i class="icon-heart"></i></a>
     <% } %>
     </div>
     <div class="clearfix"></div>
