@@ -261,6 +261,94 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
+-- Data for Name: SequelizeMeta; Type: TABLE DATA; Schema: public; Owner: msharif34
+--
+
+COPY "SequelizeMeta" (name) FROM stdin;
+20150913110141-create-user.js
+20150914163916-create-provider.js
+20150915175104-create-course.js
+20150915175121-create-asset.js
+\.
+
+
+--
+-- Data for Name: assets; Type: TABLE DATA; Schema: public; Owner: msharif34
+--
+
+COPY assets (id, title, link, type, "courseId", "createdAt", "updatedAt") FROM stdin;
+1	Basic Aqeedah Course 1	https://www.youtube.com/embed/yZSj7hiYrVQ	video	1	2015-09-15 18:11:40.261-07	2015-09-15 18:11:40.261-07
+2	Basic Aqeedah Course 2	https://youtube.com/embed//WrsrauY6qDQ	video	1	2015-09-15 18:12:05.782-07	2015-09-15 18:12:05.782-07
+3	Basic Aqeedah Course 3	https://youtube.com/embed/RxspvXP_oU0	video	1	2015-09-15 18:12:46.848-07	2015-09-15 18:12:46.848-07
+4	Basic Aqeedah Course 4	https://youtube.com/embed/RxspvXP_oU0	video	1	2015-09-15 18:13:03.731-07	2015-09-15 18:13:03.731-07
+5	Basic Fiqh Course 1	https://youtube.com/embed/RzI20PvLgN8	video	2	2015-09-15 18:14:12.782-07	2015-09-15 18:14:12.782-07
+6	Basic Fiqh Course 2	https://youtube.com/embed/Qj3uC3pnFQ8	video	2	2015-09-15 18:14:26.993-07	2015-09-15 18:14:26.993-07
+7	Basic Fiqh Course 3	https://youtube.com/embed/j-jDH9SVV40	video	2	2015-09-15 18:14:41.051-07	2015-09-15 18:14:41.051-07
+8	Basic Fiqh Course 4	https://youtube.com/embed/KdHPdYUCzbA	video	2	2015-09-15 18:14:54.108-07	2015-09-15 18:14:54.108-07
+9	Basic Tajweed Course 1	https://youtube/embed/J47qpq8Fda0?list=PL8B4E99CA5DB960E6	video	3	2015-09-15 18:16:40.993-07	2015-09-15 18:16:40.993-07
+10	Basic Tajweed Course 2	https://youtube.com/embed/zVeQYIlR9qU?list=PL8B4E99CA5DB960E6	video	3	2015-09-15 18:16:56.494-07	2015-09-15 18:16:56.494-07
+11	Basic Tajweed Course 4	https://youtube.com/embed/L33rYMQ5So0?list=PL8B4E99CA5DB960E6	video	3	2015-09-15 18:17:23.084-07	2015-09-15 18:17:23.084-07
+\.
+
+
+--
+-- Name: assets_id_seq; Type: SEQUENCE SET; Schema: public; Owner: msharif34
+--
+
+SELECT pg_catalog.setval('assets_id_seq', 11, true);
+
+
+--
+-- Data for Name: courses; Type: TABLE DATA; Schema: public; Owner: msharif34
+--
+
+COPY courses (id, title, instructor, description, image, category, paid, "createdAt", "updatedAt") FROM stdin;
+1	Basic Aqeedah Course	Sheikh Ahmed Nur	Tayibun Academy is now offering a new and improved 7 level classical Fiqh beginners course. The beginners course is now taught in Somali!	images/axmed.jpg	Aqeedah	t	2015-09-15 18:11:40.22-07	2015-09-15 18:11:40.22-07
+2	Basic Fiqh Course	Sheikh Mohamed Kariye	Tayibun Academy is now offering a new and improved 7 level classical Fiqh beginners course. The beginners course is now taught in Somali!	images/kariye.jpg	Fiqh	t	2015-09-15 18:14:12.754-07	2015-09-15 18:14:12.754-07
+3	Basic Tajweed Course	Sheikh Abdiaziz Jama	Tayibun Academy is now offering a new and improved 7 level classical Fiqh beginners course. The beginners course is now taught in Somali!	images/abdiaziz.jpg	Quran	t	2015-09-15 18:16:40.965-07	2015-09-15 18:16:40.965-07
+\.
+
+
+--
+-- Name: courses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: msharif34
+--
+
+SELECT pg_catalog.setval('courses_id_seq', 3, true);
+
+
+--
+-- Data for Name: providers; Type: TABLE DATA; Schema: public; Owner: msharif34
+--
+
+COPY providers (id, pid, token, type, "userId", "createdAt", "updatedAt") FROM stdin;
+\.
+
+
+--
+-- Name: providers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: msharif34
+--
+
+SELECT pg_catalog.setval('providers_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: msharif34
+--
+
+COPY users (id, first_name, last_name, email, password, "createdAt", "updatedAt") FROM stdin;
+1	Mukhtar	Shariff	fatuma.cadey@gmail.com	$2a$10$5UASQ62Veukq/Btej28Kfu4GSnxjQp2NjH6sXxKNmI9173Y5kbina	2015-09-15 18:18:38.85-07	2015-09-15 18:18:38.85-07
+2	Mukhtar	Shariff	msharif34@yahoo.com	$2a$10$opvld00JJEuI9v.ScEQheujRIGKkhTdHQIFNZF7OyGukE9JpiWrBy	2015-09-15 19:02:03.241-07	2015-09-15 19:02:03.241-07
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: msharif34
+--
+
+SELECT pg_catalog.setval('users_id_seq', 2, true);
+
+
+--
 -- Name: SequelizeMeta_pkey; Type: CONSTRAINT; Schema: public; Owner: msharif34; Tablespace: 
 --
 
