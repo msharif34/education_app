@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('videos', {
+    return queryInterface.createTable('courses', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,11 +14,17 @@ module.exports = {
       instructor: {
         type: Sequelize.STRING
       },
+      description: {
+        type: Sequelize.STRING
+      },
+      image: {
+        type: Sequelize.STRING
+      },
+      category: {
+        type: Sequelize.STRING
+      },
       paid: {
         type: Sequelize.BOOLEAN
-      },
-      link: {
-        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +37,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('videos');
+    return queryInterface.dropTable('courses');
   }
 };

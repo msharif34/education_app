@@ -53,14 +53,14 @@
       });
     </script>
     <!-- //Owl Carousel Assets -->
-    <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/css/font-awesome.min.css">
 </head>
 <body>
 <div class="header_bg">
 <div class="container">
   <div class="row header">
     <div class="logo navbar-left">
-      <h1><a href="index.html">Tayibun </a></h1>
+      <h1><a href="/">Tayibun </a></h1>
     </div>
     <div class="h_search navbar-right">
       <form>
@@ -95,7 +95,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
+          <% if(currentUser){ %>
+            <li ><a href="/dashboard">Student Dashboard</a></li>
+            <% }else{ %>
+            <li ><a href="/">Home</a></li>
+            <% } %>
             <li><a href="/courses">Course List</a></li>
             <li><a href="/students">Student Info</a></li>
             <li><a href="/contact">Contact Us</a></li>

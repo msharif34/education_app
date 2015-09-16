@@ -4,7 +4,10 @@ var db = require('../models')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('courses/course-list');
+	db.course.findAll().then(function(data){
+		// res.send(data)
+	  res.render('courses/course-list', {data:data});
+	})
 });
 
 router.get('/members', function(req, res, next) {
