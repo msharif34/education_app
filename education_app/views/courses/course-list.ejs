@@ -8,177 +8,97 @@
 			<li role="presentation" class="active"><a href="#new" aria-controls="new" role="tab" data-toggle="tab">New Courses</a></li>
 			<li role="presentation"><a href="#free" aria-controls="free" role="tab" data-toggle="tab">Free Courses</a></li>
 			<li role="presentation"><a href="#paid" aria-controls="paid" role="tab" data-toggle="tab">Paid Courses</a></li>
-			<li role="presentation"><a href="#live" aria-controls="live" role="tab" data-toggle="tab">Settings</a></li>
+			<li role="presentation"><a href="#All" aria-controls="All" role="tab" data-toggle="tab">All Courses</a></li>
 		</ul>
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="new">
+			<% data.forEach(function(data){ %>
 				<div class="row">
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; 20px; margin-top: 20px;">
-						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column">
-						<div class="summary">
-							<h3 class="">Basic Arabic Course (1)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
-							<div class="bottom clearfix">
-								<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
-							</div>       
-						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; 20px; margin-top: 20px;">
-						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="summary">
-							<h3 class="">Basic Arabic Course (2)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
-							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
+							<img src="<%= data.image %>" class="pull-left" width="230" height="200"
 							style="margin-bottom: 20px; margin-top: 20px;">
 						</div>
 					</div>
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 						<div class="summary">
-							<h3 class="">Basic Arabic Course (3)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
+							<h3 class=""><%= data.title %></h3>
+							<p><%= data.description %></p><p></p>
 							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
+								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Learn More!</h5></a></span>
 							</div>       
 						</div>
 					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; 20px; margin-top: 20px;">
-						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="summary">
-							<h3 class="">Basic Arabic Course (4)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
-							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
-							</div>
-						</div>
-					</div>
 				</div>
+				<% }) %>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="free">
+			<% data.forEach(function(data){ %>
+			<% if(data.paid == false){ %>
 				<div class="row">
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
+							<img src="<%= data.image %>" class="pull-left" width="230" height="200"
 							style="margin-bottom: 20px; margin-top: 20px;">
 						</div>
 					</div>
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 						<div class="summary">
-							<h3 class="">Free Course (3)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
+							<h3 class=""><%= data.title %></h3>
+							<p><%= data.description %></p><p></p>
 							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
+								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Learn More!</h5></a></span>
 							</div>       
 						</div>
 					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; 20px; margin-top: 20px;">
-						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="summary">
-							<h3 class="">Free Course (4)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
-							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
-							</div>
-						</div>
-					</div>
 				</div>
+				<% } %>
+				<% }) %>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="paid">
+			<% data.forEach(function(data){ %>
+			<% if(data.paid == true){ %>
 				<div class="row">
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
+							<img src="<%= data.image %>" class="pull-left" width="230" height="200"
 							style="margin-bottom: 20px; margin-top: 20px;">
 						</div>
 					</div>
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 						<div class="summary">
-							<h3 class="">Paid Course (3)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
+							<h3 class=""><%= data.title %></h3>
+							<p><%= data.description %></p><p></p>
 							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
+								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Learn More!</h5></a></span>
 							</div>       
 						</div>
 					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; 20px; margin-top: 20px;">
-						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="summary">
-							<h3 class="">Paid Course (4)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
-							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
-							</div>
-						</div>
-					</div>
 				</div>
+				<% } %>
+				<% }) %>
 			</div>
-			<div role="tabpanel" class="tab-pane" id="live">
+			<div role="tabpanel" class="tab-pane" id="All">
+			<% data.forEach(function(data){ %>
 				<div class="row">
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
+							<img src="<%= data.image %>" class="pull-left" width="230" height="200"
 							style="margin-bottom: 20px; margin-top: 20px;">
 						</div>
 					</div>
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 						<div class="summary">
-							<h3 class="">Paid Course (3)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
+							<h3 class=""><%= data.title %></h3>
+							<p><%= data.description %></p><p></p>
 							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
+								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Learn More!</h5></a></span>
 							</div>       
 						</div>
 					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="http://placehold.it/400x300" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; 20px; margin-top: 20px;">
-						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="summary">
-							<h3 class="">Paid Course (4)</h3>
-							<p>Huda Academy is now offering a new and improved 7 level classical Arabic beginners course. The beginner's course is now taught in English!</p><p></p>
-							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="?course=1326808297" class="learn"><h5>Learn More!</h5></a></span>
-							</div>
-						</div>
-					</div>
 				</div>
+				<% }) %>
 			</div>
 		</div>
 	</div>

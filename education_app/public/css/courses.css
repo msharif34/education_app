@@ -61,3 +61,8 @@
 .well-sm {
     margin-top: 15px;
 }
+
+..main_bg .show {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

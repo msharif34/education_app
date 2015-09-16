@@ -21,7 +21,7 @@ router.post('/login',function(req,res){
         req.login(user,function(err){
           if(err) throw err;
           req.flash('success','Welcome back, '+ user.first_name +'. ' + 'You are now logged in.');
-          res.redirect('/restricted');
+          res.redirect('/dashboard');
         });
       }else{
         req.flash('danger',info.message || 'Unknown error.');
