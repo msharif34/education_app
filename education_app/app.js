@@ -8,6 +8,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var courses = require('./routes/courses');
+var contact = require('./routes/contact');
 var auth = require('./routes/auth');
 var path = require('path');
 var logger = require('morgan');
@@ -136,6 +137,7 @@ passport.use(new FacebookStrategy({
 
 
 app.use('/', routes);
+app.use('/', contact);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/courses', courses);

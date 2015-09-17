@@ -1,0 +1,43 @@
+<div class="container">
+	<div class="row">
+	</div>
+	<hr />
+	<div class="row">
+		<div class="col-sm-3 col-md-2">
+			<a href="#" class="btn btn-danger btn-sm btn-block" role="button">COMPOSE</a>
+			<hr />
+			<ul class="nav nav-pills nav-stacked">
+				<li class="active"><a href="#"><span class="badge pull-right">42</span> Inbox </a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-sm-9 col-md-10">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
+				</span>Message from: <%= data.first_name %> <%= data.last_name %></a></li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane fade in active" id="home">
+							<div class="list-group">
+							<div class="well">
+								<p><%= data.message %></p>
+							</div>
+					</div>
+				</div>
+				<div class="tab-pane fade in" id="profile">
+					<div class="list-group">
+						<div class="list-group-item">
+							<span class="text-center">This tab is empty.</span>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade in" id="messages">
+					...</div>
+					<div class="tab-pane fade in" id="settings">
+						This tab is empty.</div>
+					</div>
+					</div>
+				</div>
+			</div>

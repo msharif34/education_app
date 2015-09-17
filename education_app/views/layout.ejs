@@ -13,6 +13,7 @@
      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <link href="/css/login.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/messages.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/css/courses.css" rel="stylesheet" type="text/css" media="all" />
 <!-- start plugins -->
@@ -70,6 +71,7 @@
         <input type="submit" value="search">
       </form>
       <% if(currentUser){ %>
+      <a href="/admin" class="btn btn-default pull-right">Admin Home</a>
       <a href="/auth/logout" class="btn btn-default pull-right">Logout</a>
       <h6>Logged in as: <%= currentUser.first_name %> </h6>
       <% } %>

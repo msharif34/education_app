@@ -9,13 +9,64 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+/* GET admin courses page. */
+router.get('/admin/courses', function(req, res, next) {
+  db.course.findAll().then(function(courses){
+    // res.send(courses)
+    res.render('admin/courses',  { layout: 'admin/adminLayout',
+                            courses: courses });
+  })
+});
+
+
+/* POST admin courses page. */
+router.post('/admin/courses', function(req, res, next) {
+  var status = req.body.status.replace(/['"]+/g, '')
+  console.log(status)
+    db.course.create({title: req.body.title,
+      instructor: req.body.instructor,
+      description: req.body.description,
+      image: req.body.image,
+      category: req.body.category,
+      paid: status,
+    }).then(function(course){
+      db.asset.create
+      res.redirect('/admin/courses')
+  })
+});
+
 /* GET admin page. */
 router.get('/admin', function(req, res, next) {
-  res.render('admin',  { layout: 'admin' });
+  db.course.findAll().then(function(courses){
+    db.message.findAll().then(function(messages){
+      db.user.findAll().then(function(users){
+       res.render('admin',  { layout: 'admin',
+                            courses: courses,
+                            messages: messages,
+                            users: users });
+      })
+    })
+  })
 });
 
 router.get('/admin/login',function(req,res){
   res.render('admin/login');
+});
+
+router.get('/admin/messages',function(req,res){
+  db.message.findAll().then(function(messages){
+    // res.send(data)
+  res.render('admin/messages', {layout:'admin/adminLayout',
+                                messages:messages});
+  })
+});
+
+router.get('/admin/messages/:id',function(req,res){
+  var id = req.params.id;
+  db.message.find({where: {id: id}}).then(function(data){
+    // res.send(data)
+  res.render('admin/show', {data:data});
+  })
 });
 
 //POST /login
