@@ -1,13 +1,32 @@
-.btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active,.btn-facebook.active,.open>.dropdown-toggle.btn-facebook{color:#fff;background-color:#2d4373;border-color:rgba(0,0,0,0.2)}
-
-
-.welcome_message {
-	font-family: 'texgyreadventorregular';
-	margin: 0 auto;
+.title h2
+{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 42px;
 	text-align: center;
-
+	color: #FF5454;
+	text-transform: uppercase;
+}
+.desc p
+{
+	width: 75%;
+	margin: 0 auto;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 400;
+	color: #2E2E2E;
+	font-size: 16px;
+	text-align: center;
+	line-height: 25px;
 
 }
+.desc p a
+{
+	text-decoration: none;
+	color: #8ab839;
+}
+
+.btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active,.btn-facebook.active,.open>.dropdown-toggle.btn-facebook{color:#fff;background-color:#2d4373;border-color:rgba(0,0,0,0.2)}
+
 
 video {
     display: block;
@@ -28,6 +47,7 @@ body {
 	font-family: 'open_sansregular';
 /*	background-image: url("/images/background.jpg");
 */	font-size: 100%;
+/*	background-color: grey;*/
 	/*opacity: 10;
 	background-repeat: no-repeat;*/
 
@@ -35,7 +55,7 @@ body {
 }
 /* start header */
 .header_bg{
-	border-top:8px groove #3b3b3b;
+	border-top:0px groove #3b3b3b;
 	background: #ffffff;
 }
 .header_bg1 {
@@ -49,7 +69,7 @@ body {
 .logo h1 a{
 	font-size: 1em;
 	text-transform: uppercase;
-	color: #3B3B3B;
+	color: #FF5454;
 	text-decoration: none;
 	font-family: 'texgyreadventorregular';
 }
@@ -170,6 +190,8 @@ body {
 /* start main */
 .main_bg{
 	background: #ffffff;
+
+
 }
 .main{
 	padding: 5% 0;
@@ -334,7 +356,7 @@ body {
 }
 /* start about */
 .about{
-	padding: 4% 0;
+	padding: 0% 0;
 }
 .about h2{
 	margin: 0 0 20px;
