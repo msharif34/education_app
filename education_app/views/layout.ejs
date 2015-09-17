@@ -70,13 +70,14 @@
         <input type="submit" value="search">
       </form>
       <% if(currentUser){ %>
-      <a href="/auth/logout" class="btn btn-default pull-right">Logout</a>
       <h6>Logged in as: <%= currentUser.first_name %> </h6>
+      <a href="/auth/logout" class="btn btn-default pull-right" >Logout</a>
+      <a href="/settings" class="btn btn-default pull-right" ><i class="fa fa-cog"></i>Settings</a>
+
       <% } %>
       <% if(!currentUser){ %>
-   <a href="/auth/login" class="btn btn-default pull-right" >Login <i class="icon-heart"></i></a>
-    <a href="/auth/signup" class="btn btn-default pull-right">Sign up <i class="icon-heart"></i></a>
-    <a href="/admin/login" class="btn btn-default pull-left" >Admin Login <i class="icon-heart"></i></a>
+   <a href="/auth/login" class="btn btn-default pull-right" >Login</a>
+    <a href="/auth/signup" class="btn btn-default pull-right">Sign up</a>
       <a a href="/auth/login/facebook"class="btn btn-social-icon btn-facebook"> Sign in with Facebook</a>
     <% } %>
     </div>
@@ -139,7 +140,9 @@
   <div class="container">
     <div class="row  footer">
       <div class="copy text-center">
-        <p class="link"><span>All rights reserved | Tayibun.com</span></p>
+        <p class="link"><span>All rights reserved | Tayibun.com     <a href="/admin/login" class="btn btn-default pull-left" >Admin Login <i class="icon-heart"></i></a>
+
+</span></p>
       </div>
     </div>
   </div>
