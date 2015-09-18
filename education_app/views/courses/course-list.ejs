@@ -29,9 +29,20 @@
 								<div class="bottom clearfix">
 								<span class="lectures-count"><h5>13 Lectures</h5></span>
 								<% if(data.paid == false || courseMap[data.id]){ %>
-								<span class="watch-link"><a href="/courses/<%= data.id %>" class="learn"><h5>Start This Course!</h5></a></span>
+								<span class="watch-link">Already purchased! Watch now.</span>
+								<span class="watch-link"><a href="/courses/watch/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start This Course!</h5></a></span>
 								<% }else if(data.paid == true){ %>
-								<span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Purchase This Course!</h5></a></span>
+								<span class="watch-link"><a href="/preview/<%= data.id %>" class="learn"><h5>More Info!</h5></a></span>
+								<form action="/courses/buy/<%= data.id %>" method="POST">
+									<script
+									src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+									data-key="pk_test_c9gQIaA2tMmgbD0KDYPBzRYx"
+									data-amount="999"
+									data-name="Demo Site"
+									data-description="One video ($9.99)"
+									data-image="/128x128.png">
+								</script>
+							</form>
 								<% } %>
 							</div>          
 							</div>
@@ -83,9 +94,20 @@
 								<div class="bottom clearfix">
 								<span class="lectures-count"><h5>13 Lectures</h5></span>
 								<% if(data.paid == false || courseMap[data.id]){ %>
-								<span class="watch-link"><a href="/courses/<%= data.id %>" class="learn"><h5>Start This Course!</h5></a></span>
+								<span class="watch-link">Already purchased! Watch now.</span>
+								<span class="watch-link"><a href="/courses/watch/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start This Course!</h5></a></span>
 								<% }else if(data.paid == true){ %>
-								<span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Purchase This Course!</h5></a></span>
+								<span class="watch-link"><a href="/preview/<%= data.id %>" class="learn"><h5>More Info!</h5></a></span>
+								<form action="/courses/buy/<%= data.id %>" method="POST">
+									<script
+									src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+									data-key="pk_test_c9gQIaA2tMmgbD0KDYPBzRYx"
+									data-amount="2000"
+									data-name="Demo Site"
+									data-description="One video ($20.00)"
+									data-image="/128x128.png">
+								</script>
+							</form>
 								<% } %>
 							</div>          
 							</div>
@@ -112,9 +134,20 @@
 								<div class="bottom clearfix">
 								<span class="lectures-count"><h5>13 Lectures</h5></span>
 								<% if(data.paid == false || courseMap[data.id]){ %>
-								<span class="watch-link"><a href="/courses/<%= data.id %>" class="learn"><h5>Start This Course!</h5></a></span>
+								<span class="watch-link">Already purchased! Watch now.</span>
+								<span class="watch-link"><a href="/courses/watch/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start This Course!</h5></a></span>
 								<% }else if(data.paid == true){ %>
-								<span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Purchase This Course!</h5></a></span>
+								<span class="watch-link"><a href="/preview/<%= data.id %>" class="learn"><h5>More Info!</h5></a></span>
+								<form action="/courses/buy/<%= data.id %>" method="POST">
+									<script
+									src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+									data-key="pk_test_c9gQIaA2tMmgbD0KDYPBzRYx"
+									data-amount="2000"
+									data-name="Demo Site"
+									data-description="One video ($20.00)"
+									data-image="/128x128.png">
+								</script>
+							</form>
 								<% } %>
 							</div>          
 							</div>

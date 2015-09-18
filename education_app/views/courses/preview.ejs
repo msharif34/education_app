@@ -1,45 +1,45 @@
-<div class="row">
+<div class="row preview">
   <br>
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-
-  </div>
-  <div class="col-xs- col-sm- col-md- col-lg-">
-    <div class="video">
- 
-      <iframe width="575" height="315" src="https://www.youtube.com/embed/OqXQP97wYCs" frameborder="0" allowfullscreen></iframe>
-    
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+  <div class="container">
+      <div class="pull-left">
+        <iframe width="575" height="315" src="https://www.youtube.com/embed/OqXQP97wYCs" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-
+  </div>
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 course-action">
+    <h1><%= current.title %></h1>
+    <h5><%= current.description %></h5>
+    <form action="/courses/buy/<%= data.id %>" method="POST">
+                  <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_c9gQIaA2tMmgbD0KDYPBzRYx"
+                  data-amount="9999"
+                  data-name="Demo Site"
+                  data-description="One video ($9.99)"
+                  data-image="/128x128.png">
+                </script>
+              </form>
   </div>
 </div>
 </div><!-- end slider -->
 <div class="main_bg"><!-- start main -->
   <div class="container">
     <div class="main row">
-      <div class="col-md-3 images_1_of_4 text-center">
+      <div class="col-md-6 text-center">
         <div class="video">
-         <img src="http://www.water-bend.com/wp-content/uploads/2013/04/video-player-icon.png" width="230" height="200" style="margin-bottom: 20px; 20px; margin-top: 20px;"> 
-        </div>       
-        <h5><a href="#">Culuumo faro badan </a></h5>
-        <p class="para">Culuumo faro badan, oo aduunka joogan ba Tayibun so galo.</p>
-        <a href="single-page.html" class="fa-btn btn-1 btn-1e">Watch</a>
+        <% data.forEach(function(data){ %>
+       <a href="/dashboard"><img src="http://www.water-bend.com/wp-content/uploads/2013/04/video-player-icon.png" width="100" height="100" style="margin-bottom: 20px; 20px; margin-top: 20px;"></a>
+         <% }) %>
       </div>
-      <div class="col-md-3 images_1_of_4 bg1 text-center">
-       <img src="http://www.water-bend.com/wp-content/uploads/2013/04/video-player-icon.png" width="230" height="200" style="margin-bottom: 20px; 20px; margin-top: 20px;">          <h5><a href="#">Laptop or Mobile</a></h5>
-       <p class="para">Video yaasha waxa ka fiirsa kaarta laptopkaaga ama mobile phone.</p>
-       <a href="single-page.html" class="fa-btn btn-1 btn-1e">Watch</a>
-     </div>
-     <div class="col-md-3 images_1_of_4 bg1 text-center">
-      <img src="http://www.water-bend.com/wp-content/uploads/2013/04/video-player-icon.png" width="230" height="200" style="margin-bottom: 20px; 20px; margin-top: 20px;">          <h5><a href="#">$ Qiimo jaban</a></h5>
-       <p class="para">Qiimo oo jaban.</p>
-       <a href="single-page.html" class="fa-btn btn-1 btn-1e">Watch</a>
-     </div>
-     <div class="col-md-3 images_1_of_4 bg1 text-center">
-      <img src="http://www.water-bend.com/wp-content/uploads/2013/04/video-player-icon.png" width="230" height="200" style="margin-bottom: 20px; 20px; margin-top: 20px;">          <h5><a href="#">Access any time</a></h5>
-       <p class="para">Waakhitiga raabtid baad fiirsarkarta video yaasha</p>
-       <a href="single-page.html" class="fa-btn btn-1 btn-1e">Watch</a>
+      </div>
+      <div class="col-md-6 images_1_of_4 bg1 text-center">
+      <div class="well">
+        
+       <span><img class="pull-left" src="/<%= current.image %>" width="100" height="100" style="margin-bottom: 20px; 20px; margin-top: 20px;"></span><h3>About the instructor:</h3><h5><%= current.instructor %></h5>
+       <hr>
+       <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec bibendum tortor. Cras eget lorem rutrum, tincidunt leo tempus, iaculis massa. Maecenas nec sagittis odio, id congue eros. Pellentesque facilisis sed libero id placerat. Proin varius augue in mattis molestie. Donec egestas id dui non viverra. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur ultricies efficitur mi, sit amet mollis est ultrices id. Nullam fermentum commodo felis suscipit suscipit. Cras sed lorem risus. Donec vulputate sodales nulla, vel molestie nibh pellentesque eget. Quisque cursus nulla ac libero volutpat sollicitudin. Sed placerat massa eget nibh tincidunt pharetra. Nunc at nisl nec augue imperdiet commodo ut vitae massa.</h5>
+      </div>
      </div>
    </div>
  </div>

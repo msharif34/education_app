@@ -96,26 +96,34 @@ router.get('/contact', function(req, res, next) {
   res.render('contact/contact');
 });
 
-/* GET about page. */
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
+router.get('/preview/:id', function(req, res, next) {
+    db.course.find({where: {id: req.params.id}}).then(function(current){
+      db.asset.findAll({where: {courseId: req.params.id}}).then(function(data){
+        // res.send(data)
+      res.render('courses/preview', {current: current, data:data});
+      })
+    })
 
+});
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
   if(!req.user){
     req.flash('danger','You must be logged in to view the dashboard.');
         res.redirect('/auth/login');
   }else{ 
-   db.course.findAll().then(function(data){
-        db.user.find({
-          where: {id: req.user.id},
-          include: [db.course]
-        }).then(function(user) {
-        // res.send(user.courses);
-     res.render('courses/dashboard', {data:data, myCourses: user.courses});
-      })
-   })
+    db.course.findAll().then(function(data){
+            db.user.find({
+              where: {id: req.user.id},
+              include: [db.course]
+            }).then(function(user) {
+              var courseMap = {};
+              user.courses.forEach(function(item){
+                courseMap[item.id]=true;
+              });
+            // res.send(user.courses);
+            res.render('courses/dashboard', {data:data, myCourses: user.courses, courseMap:courseMap});
+          })
+       })
   }
 });
 

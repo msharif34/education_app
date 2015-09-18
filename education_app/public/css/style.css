@@ -925,3 +925,16 @@ body {
 		margin-left: 0;
 	}
 }
+.preview {
+	background-color: #CC5656;
+}
+.stage-wrap {
+    height: 380px;
+    padding-top: 80px;
+    margin-top: -10px;
+    z-index: 0;
+}
+.course-action {
+    color: #fff;
+    text-align: center;
+}

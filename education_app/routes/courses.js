@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../models')
+var db = require('../models');
+var stripe = require("stripe")(process.env.STRIPE_API_KEY);
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -25,18 +27,57 @@ router.get('/', function(req, res, next) {
     }
 });
 
+// Route for Stripe
+router.post('/charge', function(req, res) {
+
+  var stripeToken = req.body.stripeToken;
+
+  var charge = stripe.charges.create({
+    amount: 1000, // amount in cents, again
+    currency: "usd",
+    card: stripeToken,
+    description: "payinguser@example.com"
+  }, function(err, charge) {
+    if (err && err.type === 'StripeCardError') {
+      // The card has been declined
+      res.send(err);
+    } else if(err){
+      res.send(err);
+    } else {
+      //Render a thank you page called "Charge"
+      res.send('payment good');
+    }
+  });
+
+});
 //Purchase a course
-router.get('/:id', function(req, res, next) {
+router.post('/buy/:id', function(req, res, next) {
   if(!req.user){
             req.flash('danger','Please login to purchase this course.');
             res.redirect('/auth/login')
-          }else{  
-          db.course.findById(req.params.id).then(function(course){
+          }else{
+          var stripeToken = req.body.stripeToken;
+
+          var charge = stripe.charges.create({
+            amount: 999, // amount in cents, again
+            currency: "usd",
+            card: stripeToken,
+            description: "payinguser@example.com"
+          }, function(err, charge) {
+            if (err && err.type === 'StripeCardError') {
+              // The card has been declined
+              req.flash('danger','This card has been declined.');
+            res.redirect('/')
+            } else {
+              //Render a thank you page called "Charge"
+              db.course.findById(req.params.id).then(function(course){
                 course.addUser(req.user.id).then(function(data){
                   req.flash('success','This course has been added to your dashboard.');
                   res.redirect('/dashboard')
                 });
             });
+            }
+          });  
           }
 });
 /* GET paid courses page. */
@@ -62,13 +103,6 @@ router.get('/members', function(req, res, next) {
   res.render('courses/members');
 });
 
-router.get('/preview', function(req, res, next) {
-
-	db.videos.findAll({where: {paid: true}}).then(function(data){
-		// res.send(data)
-  res.render('courses/preview', {data: data});
-	})
-});
 
 
 
