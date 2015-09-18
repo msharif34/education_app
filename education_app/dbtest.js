@@ -2,10 +2,20 @@ var db = require('./models');
 
 
 
-db.user.findOrCreate({where:
-	{first_name: 'mukhtar'}
-}).spread(function(user, created) {
-	user.createCourse({title: 'test title', instructor: 'sharif'}).then(function(course) {
-		console.log(course)
-	});
+db.user.find({where:{id: 2}
+	}).then(function(user) {
+	user.getCourses()
 });
+
+
+// Course.find('course_id_here').then(function(course){
+//	  if(course){
+//		req.user.addCourse(course).then...
+//			res.redirect or send
+//    else
+//       show error
+//
+
+// req.user.addCourse(req.body.courseId).then(... 
+
+	

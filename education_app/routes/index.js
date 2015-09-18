@@ -103,9 +103,20 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
- db.course.findAll().then(function(data){
-   res.render('courses/dashboard', {data:data});
- })
+  if(!req.user){
+    req.flash('danger','You must be logged in to view the dashboard.');
+        res.redirect('/auth/login');
+  }else{ 
+   db.course.findAll().then(function(data){
+        db.user.find({
+          where: {id: req.user.id},
+          include: [db.course]
+        }).then(function(user) {
+        // res.send(user.courses);
+     res.render('courses/dashboard', {data:data, myCourses: user.courses});
+      })
+   })
+  }
 });
 
 /* GET About US page */

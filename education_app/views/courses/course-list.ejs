@@ -14,20 +14,27 @@
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="new">
 			<% data.forEach(function(data){ %>
-				<div class="row">
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="<%= data.image %>" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; margin-top: 20px;">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								<img src="<%= data.image %>" class="pull-left" width="230" height="200"
+								style="margin-bottom: 20px; 20px; margin-top: 20px;">
+							</div>
 						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="summary">
-							<h3 class=""><%= data.title %></h3>
-							<p><%= data.description %></p><p></p>
-							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Learn More!</h5></a></span>
-							</div>       
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 column">
+							<div class="summary">
+								<h3 class=""><%= data.title %></h3>
+								<p><%= data.description %></p><p></p>
+								<div class="bottom clearfix">
+								<span class="lectures-count"><h5>13 Lectures</h5></span>
+								<% if(data.paid == false || courseMap[data.id]){ %>
+								<span class="watch-link"><a href="/courses/<%= data.id %>" class="learn"><h5>Start This Course!</h5></a></span>
+								<% }else if(data.paid == true){ %>
+								<span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Purchase This Course!</h5></a></span>
+								<% } %>
+							</div>          
+							</div>
 						</div>
 					</div>
 				</div>
@@ -36,20 +43,22 @@
 			<div role="tabpanel" class="tab-pane" id="free">
 			<% data.forEach(function(data){ %>
 			<% if(data.paid == false){ %>
-				<div class="row">
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="<%= data.image %>" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; margin-top: 20px;">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								<img src="<%= data.image %>" class="pull-left" width="230" height="200"
+								style="margin-bottom: 20px; 20px; margin-top: 20px;">
+							</div>
 						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="summary">
-							<h3 class=""><%= data.title %></h3>
-							<p><%= data.description %></p><p></p>
-							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Learn More!</h5></a></span>
-							</div>       
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 column">
+							<div class="summary">
+								<h3 class=""><%= data.title %></h3>
+								<p><%= data.description %></p><p></p>
+								<div class="bottom clearfix">
+									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/watch/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
+								</div>       
+							</div>
 						</div>
 					</div>
 				</div>
@@ -59,20 +68,27 @@
 			<div role="tabpanel" class="tab-pane" id="paid">
 			<% data.forEach(function(data){ %>
 			<% if(data.paid == true){ %>
-				<div class="row">
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="<%= data.image %>" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; margin-top: 20px;">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								<img src="<%= data.image %>" class="pull-left" width="230" height="200"
+								style="margin-bottom: 20px; 20px; margin-top: 20px;">
+							</div>
 						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="summary">
-							<h3 class=""><%= data.title %></h3>
-							<p><%= data.description %></p><p></p>
-							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Learn More!</h5></a></span>
-							</div>       
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 column">
+							<div class="summary">
+								<h3 class=""><%= data.title %></h3>
+								<p><%= data.description %></p><p></p>
+								<div class="bottom clearfix">
+								<span class="lectures-count"><h5>13 Lectures</h5></span>
+								<% if(data.paid == false || courseMap[data.id]){ %>
+								<span class="watch-link"><a href="/courses/<%= data.id %>" class="learn"><h5>Start This Course!</h5></a></span>
+								<% }else if(data.paid == true){ %>
+								<span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Purchase This Course!</h5></a></span>
+								<% } %>
+							</div>          
+							</div>
 						</div>
 					</div>
 				</div>
@@ -81,20 +97,27 @@
 			</div>
 			<div role="tabpanel" class="tab-pane" id="All">
 			<% data.forEach(function(data){ %>
-				<div class="row">
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							<img src="<%= data.image %>" class="pull-left" width="230" height="200"
-							style="margin-bottom: 20px; margin-top: 20px;">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								<img src="<%= data.image %>" class="pull-left" width="230" height="200"
+								style="margin-bottom: 20px; 20px; margin-top: 20px;">
+							</div>
 						</div>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-						<div class="summary">
-							<h3 class=""><%= data.title %></h3>
-							<p><%= data.description %></p><p></p>
-							<div class="bottom clearfix">
-								<span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Learn More!</h5></a></span>
-							</div>       
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 column">
+							<div class="summary">
+								<h3 class=""><%= data.title %></h3>
+								<p><%= data.description %></p><p></p>
+								<div class="bottom clearfix">
+								<span class="lectures-count"><h5>13 Lectures</h5></span>
+								<% if(data.paid == false || courseMap[data.id]){ %>
+								<span class="watch-link"><a href="/courses/<%= data.id %>" class="learn"><h5>Start This Course!</h5></a></span>
+								<% }else if(data.paid == true){ %>
+								<span class="watch-link"><a href="/courses/<%= data.title.replace(/\s+/g, '-') %>" class="learn"><h5>Purchase This Course!</h5></a></span>
+								<% } %>
+							</div>          
+							</div>
 						</div>
 					</div>
 				</div>

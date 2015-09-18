@@ -4,13 +4,43 @@ var db = require('../models')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-	db.course.findAll().then(function(data){
-		// res.send(data)
-	  res.render('courses/course-list', {data:data});
-	})
+    if(req.user){
+       db.course.findAll().then(function(data){
+            db.user.find({
+              where: {id: req.user.id},
+              include: [db.course]
+            }).then(function(user) {
+              var courseMap = {};
+              user.courses.forEach(function(item){
+                courseMap[item.id]=true;
+              });
+            // res.send(user.courses);
+            res.render('courses/course-list', {data:data, myCourses: user.courses, courseMap:courseMap});
+          })
+       })
+    }else{
+      db.course.findAll().then(function(data){
+        res.render('courses/course-list', {data:data,courseMap:{}});
+      })
+    }
+});
+
+//Purchase a course
+router.get('/:id', function(req, res, next) {
+  if(!req.user){
+            req.flash('danger','Please login to purchase this course.');
+            res.redirect('/auth/login')
+          }else{  
+          db.course.findById(req.params.id).then(function(course){
+                course.addUser(req.user.id).then(function(data){
+                  req.flash('success','This course has been added to your dashboard.');
+                  res.redirect('/dashboard')
+                });
+            });
+          }
 });
 /* GET paid courses page. */
-router.get('/:title', function(req, res, next) {
+router.get('/watch/:title', function(req, res, next) {
   var title = req.params
   db.course.findAll({where: {
     title: title.title.replace(/-/g, ' ')

@@ -1,3 +1,8 @@
+a {
+    color: #FF0000;
+    transition: all ease-in-out 200ms;
+}
+
 .title h2
 {
 	font-family: 'Roboto', sans-serif;

@@ -8,15 +8,46 @@
 	<div>
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#aqeedah" aria-controls="new" role="tab" data-toggle="tab">Aqeedah</a></li>
+			<li role="presentation" class="active"><a href="#myCourses" aria-controls="new" role="tab" data-toggle="tab">All My Courses</a></li>
+			<li role="presentation"><a href="#aqeedah" aria-controls="new" role="tab" data-toggle="tab">Aqeedah</a></li>
 			<li role="presentation"><a href="#Fiqh" aria-controls="Fiqh" role="tab" data-toggle="tab">Fiqh</a></li>
 			<li role="presentation"><a href="#Hadith" aria-controls="Hadith" role="tab" data-toggle="tab">Hadith</a></li>
 			<li role="presentation"><a href="#Quran" aria-controls="Quran" role="tab" data-toggle="tab">Quran</a></li>
 		</ul>
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="aqeedah">
-			<% data.forEach(function(course){ %>
+		<div role="tabpanel" class="tab-pane active" id="myCourses">
+		<% if(myCourses.length == 0){ %>
+		<h3 class="text-center">Looks like you havent purchased any courses yet.  Check our <a href="/courses">Courses List </a>for free and premium content!</h3>
+		<% }else{ %>
+			<% myCourses.forEach(function(course){ %>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								<img src="<%= course.image %>" class="pull-left" width="230" height="200"
+								style="margin-bottom: 20px; 20px; margin-top: 20px;">
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 column">
+							<div class="summary">
+								<h3 class=""><%= course.title %></h3>
+								<p><%= course.description %></p><p></p>
+								<div class="bottom clearfix">
+									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/watch/<%= course.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
+								</div>       
+							</div>
+						</div>
+					</div>
+				</div>
+				<% }) %>
+				<% } %>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="aqeedah">
+			<% if(myCourses.length == 0){ %>
+		<h5 class="text-center">Looks like you havent purchased any courses yet.  Check our <a href="/courses">Courses List </a>for free and premium content!</h5>
+		<% }else{ %>
+			<% myCourses.forEach(function(course){ %>
 				<% if(course.category == 'Aqeedah'){ %>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="row">
@@ -31,7 +62,7 @@
 								<h3 class=""><%= course.title %></h3>
 								<p><%= course.description %></p><p></p>
 								<div class="bottom clearfix">
-									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= course.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
+									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/watch/<%= course.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
 								</div>       
 							</div>
 						</div>
@@ -39,9 +70,13 @@
 				</div>
 					<% } %>
 				<% }) %>
+				<% } %>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="Fiqh">
-				<% data.forEach(function(course){ %>
+				<% if(myCourses.length == 0){ %>
+		<h5 class="text-center">Looks like you havent purchased any courses yet.  Check our <a href="/courses">Courses List </a>for free and premium content!</h5>
+		<% }else{ %>
+			<% myCourses.forEach(function(course){ %>
 				<% if(course.category == 'Fiqh'){ %>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="row">
@@ -56,7 +91,7 @@
 								<h3 class=""><%= course.title %></h3>
 								<p><%= course.description %></p><p></p>
 								<div class="bottom clearfix">
-									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= course.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
+									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/watch/<%= course.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
 								</div>       
 							</div>
 						</div>
@@ -64,9 +99,13 @@
 				</div>
 					<% } %>
 				<% }) %>
+				<% } %>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="Hadith">
-				<% data.forEach(function(course){ %>
+				<% if(myCourses.length == 0){ %>
+		<h5 class="text-center">Looks like you havent purchased any courses yet.  Check our <a href="/courses">Courses List </a>for free and premium content!</h5>
+		<% }else{ %>
+			<% myCourses.forEach(function(course){ %>
 				<% if(course.category == 'Hadith'){ %>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="row">
@@ -81,7 +120,7 @@
 								<h3 class=""><%= course.title %></h3>
 								<p><%= course.description %></p><p></p>
 								<div class="bottom clearfix">
-									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= course.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
+									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/watch/<%= course.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
 								</div>       
 							</div>
 						</div>
@@ -89,9 +128,13 @@
 				</div>
 					<% } %>
 				<% }) %>
+				<% } %>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="Quran">
-				<% data.forEach(function(course){ %>
+				<% if(myCourses.length == 0){ %>
+		<h5 class="text-center">Looks like you havent purchased any courses yet.  Check our <a href="/courses">Courses List </a>for free and premium content!</h5>
+		<% }else{ %>
+			<% myCourses.forEach(function(course){ %>
 				<% if(course.category == 'Quran'){ %>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="row">
@@ -106,7 +149,7 @@
 								<h3 class=""><%= course.title %></h3>
 								<p><%= course.description %></p><p></p>
 								<div class="bottom clearfix">
-									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/<%= course.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
+									<span></span><span class="lectures-count"><h5>13 Lectures</h5></span><span class="watch-link"><a href="/courses/watch/<%= course.title.replace(/\s+/g, '-') %>" class="learn"><h5>Start Course!</h5></a></span>
 								</div>       
 							</div>
 						</div>
@@ -114,8 +157,9 @@
 				</div>
 					<% } %>
 				<% }) %>
+				<% } %>
 			</div>
 		</div>
 	</div>
-	<% } %> 
+	<% } %>
 </div>
